@@ -22,7 +22,12 @@
  *   '',  'bb'  => 'bb'
  */
 function concatenateStrings(value1, value2) {
+    if (value1.isString == true){
+    let concatenateStr = value1 + value2;
+    return concatenateStr;
+    } else{
     throw new Error('Not implemented');
+    }
 }
 
 
