@@ -351,8 +351,24 @@ function getPositivesCount(arr) {
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
+function strtoNumber(num) {
+   switch (num) {
+      case 'zero': return 0;
+      case 'one': return 1;
+      case 'two': return 2;
+      case 'three': return 3;
+      case 'four': return 4;
+      case 'five': return 5;
+      case 'six': return 6;
+      case 'seven': return 7;
+      case 'eight': return 8;
+      case 'nine': return 9;
+   }
+}
 function sortDigitNamesByNumericOrder(arr) {
-   throw new Error('Not implemented');
+   return arr.sort((a, b) => {
+      return strtoNumber(a) - strtoNumber(b)
+   });
 }
 
 /** 
@@ -368,7 +384,7 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-   throw new Error('Not implemented');
+   return arr.reduce((sum, cur) => sum + cur, 0);
 }
  
 /** 
@@ -384,7 +400,9 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-   throw new Error('Not implemented');
+   return (arr.filter((item, i) => {
+      return (!!(item) == false);
+   })).length;
 }
 
 /**
@@ -402,7 +420,9 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurences(arr, item) {
-   throw new Error('Not implemented');
+   return (arr.filter((a, i) => {
+      return (typeof item == typeof a) && (item == a);
+   })).length;
 }
 
 /**
@@ -417,7 +437,7 @@ function findAllOccurences(arr, item) {
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
 function toStringList(arr) {
-   throw new Error('Not implemented');
+   return arr.join(',');
 }
 
 
@@ -446,7 +466,9 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-   throw new Error('Not implemented');
+   return arr.sort((x, y) => {
+      return x.country != y.country ? (x.country > y.country ? 1 : -1) : (x.city > y.city ? 1 : -1);
+   });
 }
 
 /**
@@ -485,7 +507,11 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-   throw new Error('Not implemented');
+   let arr = new Array(end - start + 1);
+    arr.fill(start);
+    return arr.map((item, i) => {
+       return item + i;
+    });
 }
 
 /**
